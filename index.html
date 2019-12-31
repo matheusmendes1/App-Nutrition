@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+    <head> 
+        <title>App Nutrition</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta = "UTF-8">
+        
+        <link rel="icon" type="image/png" href="img/apple.png">
+
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    </head> 
+
+    <body>
+        <!-- Start - Navigation Bar -->
+        <nav id="navbar-nutrition" class="fixed-top navbar navbar-expand-lg navbar-nutrition">
+
+            <button class="navbar-toggler navbar-dark ml-1" type="button" data-toggle="collapse" data-target="#navbar-nutrition-toggler" aria-controls="navbar-nutrition-toggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbar-nutrition-toggler">
+                <a class="navbar-title ml-5" href="#">App Nutrition</a>
+
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ml-5">
+                    <li class="nav-item navbar-link active">
+                        <a class="nav-link" href="#table-section">Table</a>
+                    </li>
+    
+                    <li class="nav-item navbar-link">
+                        <a class="nav-link" href="#add-row-section">Add Row</a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+        <!-- End - Navigation Bar -->
+
+        <!-- Start - Spied Section -->
+        <div data-spy="scroll" data-target="#navbar-nutrition" data-offset="0" class="jumbotron spied-section">
+        
+            <!-- Table Section -->
+            <section id="table-section" class="table-client-section">
+
+                <h1 class="title-section text-center">Clients Table</h1>
+
+                <div class="filter-clients">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-5 col-lg-2">
+                            <label for="filter-clients">Search Clients</label>
+                            <input type="text" class="form-control" id="filter-clients" name="filter-clients" aria-describedby="filterHelp" placeholder="Search...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-resposive table-wrapper-scroll-y my-custom-scrollbar">
+                    <table class="table table-stripped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Peso (kg)</th>
+                                <th scope="col">Altura (m)</th>
+                                <th scope="col">Gordura Corporal (%)</th>
+                                <th scope="col">IMC</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="clients-table">
+                            <tr class="client">
+                                <td class="info-numero">1</td>
+                                <td class="info-nome">Matheus</td>
+                                <td class="info-peso">75</td>
+                                <td class="info-altura">1.75</td>
+                                <td class="info-gordura">25</td>
+                                <td class="info-imc">0</td>
+                            </tr>
+                    
+                            <tr class="client">
+                                <td class="info-numero">2</td>
+                                <td class="info-nome">Caio</td>
+                                <td class="info-peso">70</td>
+                                <td class="info-altura">1.65</td>
+                                <td class="info-gordura">20</td>
+                                <td class="info-imc">0</td>
+                            </tr>
+
+                            <tr class="client">
+                                <td class="info-numero">3</td>
+                                <td class="info-nome">Catherine</td>
+                                <td class="info-peso">55</td>
+                                <td class="info-altura">1.50</td>
+                                <td class="info-gordura">18</td>
+                                <td class="info-imc">0</td>
+                            </tr>
+
+                            <tr class="client">
+                                <td class="info-numero">4</td>
+                                <td class="info-nome">Jasmine</td>
+                                <td class="info-peso">60</td>
+                                <td class="info-altura">1.63</td>
+                                <td class="info-gordura">14</td>
+                                <td class="info-imc">0</td>
+                            </tr>
+
+                            <tr class="client">
+                                <td class="info-numero">5</td>
+                                <td class="info-nome">Philip</td>
+                                <td class="info-peso">80</td>
+                                <td class="info-altura">1.82</td>
+                                <td class="info-gordura">27</td>
+                                <td class="info-imc">0</td>
+                            </tr>
+
+                            <tr class="client">
+                                <td class="info-numero">6</td>
+                                <td class="info-nome">Mike</td>
+                                <td class="info-peso">77</td>
+                                <td class="info-altura">1.75</td>
+                                <td class="info-gordura">26</td>
+                                <td class="info-imc">0</td>
+                            </tr>
+
+                            <tr class="client">
+                                <td class="info-numero">7</td>
+                                <td class="info-nome">Doug</td>
+                                <td class="info-peso">85</td>
+                                <td class="info-altura">1.79</td>
+                                <td class="info-gordura">19</td>
+                                <td class="info-imc">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-3">
+                    <span id="erro-ajax" class="error-message invisible">Erro ao buscar os pacientes</span>
+                    <button id="import-client" class="btn btn-import-client">Import</button>
+                </div>
+            </section>
+        
+            <!-- Add Row Section -->
+            <section id="add-row-section" class="add-client-section">
+                <h1 class="title-section title-add-client text-center">Add Client</h1>
+
+                <div class="container">
+                    <ul id="mensagens-erro"></ul>
+
+                    <form id="client-form">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="nome">Nome</label>
+                                <input id="nome" name="nome" type="text" class="form-control">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="peso">Peso</label>
+                                <input id="peso" name="peso" type="number" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="altura">Altura</label>
+                                <input id="altura" name="altura" type="number" class="form-control">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="gorduraCorp">Gordura Corporal</label>
+                                <input id="gorduraCorp" name="gorduraCorp" type="number" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="wrapper">
+                            <button id="add-client" type="submit" class="btn btn-add-client">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <section id="footer-section" class="footer-section">
+            <footer class="page-footer font-small blue">
+                <div class="footer-copyright text-center py-3">© 2029 Copyright:
+                    <a href="https://github.com/matheusmendes1"> GitHub</a>
+                </div>
+            </footer>
+        </section>
+        <!-- End - Spied Section -->
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="js/bootstrap-js/bootstrap.min.js"></script>
+    <script src="js/calcula-imc.js"></script>
+    <script src="js/add-new-client.js"></script>
+    <script src="js/delete-client.js"></script>
+    <script src="js/filter-client.js"></script>
+    <script src="js/import-clients.js"></script>
+</html>
